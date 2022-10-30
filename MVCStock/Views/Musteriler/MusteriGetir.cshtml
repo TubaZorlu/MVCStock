@@ -1,0 +1,28 @@
+﻿@model MVCStock.Models.Entities.TBLMUSTERİLER
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>MusteriGetir</h2>
+
+@using (Html.BeginForm("Guncelle", "Musteriler", FormMethod.Post))
+{
+    <div class="form-group">
+        @*@Html.LabelFor(x => x.KATEGORIID)*@
+        @Html.HiddenFor(x => x.MUSTERİID, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>MUSTERİ ADI</label>
+        @Html.TextAreaFor(x => x.MUTERİAD, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MUSTERİSOYAD)
+        @Html.TextAreaFor(x => x.MUSTERİSOYAD, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Müşteri Güncelle</button>
+    </div>
+}

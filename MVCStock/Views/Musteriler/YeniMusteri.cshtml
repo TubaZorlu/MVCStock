@@ -1,0 +1,33 @@
+﻿@model MVCStock.Models.Entities.TBLMUSTERİLER
+@{
+    ViewBag.Title = "YeniMusteri";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>YeniMusteri</h2>
+
+<form method="post" class="form-group">
+    @*<div>
+        <label> Musteri Adı</label>
+        <input type="text" class="form-control" name="MUTERİAD" />
+    </div>*@
+
+    <div>
+        <label> Musteri Adı </label>
+        @Html.TextBoxFor(x => x.MUTERİAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.MUTERİAD, "", new { @style = "color:red" })
+    </div>
+    <div>
+        <label> Musteri Soyadı</label>
+        <input type="text" class="form-control" name="MUSTERİSOYAD" />
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-info" id="btn1"> Musteri Ekle</button>
+    </div>
+    <script>
+    $('#btn1').click(function () {
+        alert("müşteri ekleme yapıldı");
+    });
+    </script>
+</form>

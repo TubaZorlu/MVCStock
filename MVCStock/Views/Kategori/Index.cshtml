@@ -1,0 +1,40 @@
+﻿@using MVCStock.Models.Entities
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLKATEGORILER_>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    int sayac = 0;
+}
+
+<h2>Kategori Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th> Kategori ID</th>
+        <th> Kategori Adı</th>
+        <th> Kategori Sil</th>
+        <th> Kategori Güncelle</th>
+
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            sayac++;
+            <tr>
+                <th>@sayac</th>
+                <td>@item.KATEGORIAD</td>
+                <td> <a href="/Kategori/Sil/@item.KATEGORIID" class="btn btn-danger"> Sil</a></td>
+                <td> <a href="/Kategori/KategoriGetir/@item.KATEGORIID" class="btn btn-success">Guncelle </a></td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* sayfalar arası geçişi burada yazıyoruz *@
+ 
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new { sayfa}))
+
+<a href="/Kategori/YeniKategori" class="btn btn-primary">Yeni Kategori Ekle</a>

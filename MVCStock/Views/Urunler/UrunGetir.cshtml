@@ -1,0 +1,48 @@
+﻿@model MVCStock.Models.Entities.TBLURUNLER
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>UrunGetir</h2>
+
+@using (Html.BeginForm("Guncelle", "Urunler", FormMethod.Post))
+{
+    <div class="form-group">
+        @*@Html.LabelFor(x => x.KATEGORIID)*@
+        @Html.HiddenFor(x => x.URUNID, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.URUNAD)
+        @Html.TextAreaFor(x => x.URUNAD, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.MARKA)
+        @Html.TextAreaFor(x => x.MARKA, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.URUNKATEGORİ)
+        @*@Html.TextAreaFor(x => x.TBLKATEGORILER_.KATEGORIAD, new { @class = "form-control" })*@
+        @Html.DropDownListFor(x=>x.TBLKATEGORILER_.KATEGORIID,(List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.FIYAT)
+        @Html.TextAreaFor(x => x.FIYAT, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.STOK)
+        @Html.TextAreaFor(x => x.STOK, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Urun Güncelle</button>
+    </div>
+}
+@*@Html.DropDownListFor(x => x.TBLKATEGORILER_.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" });*@
